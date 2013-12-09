@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+
+require 'cresson/app'
+
+options = {'port' => 4567, 'bind' => '0.0.0.0'}
+
+Cresson::App.set :repo_src, ARGV.first
+Cresson::App.run!(options)
