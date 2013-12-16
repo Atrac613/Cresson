@@ -8,6 +8,10 @@ require 'cresson/helper'
 
 module Cresson
   class App < Sinatra::Base
+    not_found do
+      'Error: Bad path.'
+    end
+
     get '/' do
       'Hello'
     end
@@ -17,7 +21,7 @@ module Cresson
       jekyll_site.posts.each do |row|
         posts.push({
 	  :title => row.title,
-	  :path => row.path,
+	  :filename => row.name,
 	  :date => row.date
 	})
       end
@@ -25,5 +29,19 @@ module Cresson
       content_type :json
       posts.to_json
     end
+
+    get '/api/v1/get_post/*' do
+      filename = params[:splat].first
+
+      if not post_exists?(filename)
+        return 404
+      end
+
+      post = jekyll_post(filename)
+
+      content_type :json
+      post.to_json
+    end
+
   end
 end
