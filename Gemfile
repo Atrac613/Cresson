@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 gem 'sinatra'
 gem 'jekyll'
-gem 'yaml'
 gem 'stringex'
 
 group :test do
