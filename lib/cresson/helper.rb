@@ -23,5 +23,16 @@ module Cresson
     def post_path(post_file)
       File.join(jekyll_site.source, *%w[_posts], post_file)
     end
+
+    def default_yaml
+      defaults_file = File.join(jekyll_site.source, '_default.yml')
+      defaults  = {}
+      if File.exists? defaults_file
+        defaults = YAML::load(File.read(defaults_file))
+      end
+
+      defaults
+    end
+
   end
 end

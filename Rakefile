@@ -1,11 +1,11 @@
-require 'rake/testtask'
+task :default => [:spec]
 
-desc "default task"
-task :default => [:test]
-
-desc "test"
-Rake::TestTask.new do |t|
-  t.pattern = "spec/*_spec.rb"
-  t.verbose = true
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec) do |spec|
+    spec.pattern = 'spec/*_spec.rb'
+    spec.rspec_opts = ['-cfs']
+  end
+rescue LoadError => e
 end
 
