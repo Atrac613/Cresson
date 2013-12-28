@@ -2,3 +2,12 @@ rvm:
   - 2.0.0
 before_install:
   - sudo apt-get update
+before_script:
+  - gem install jekyll
+  - pwd
+  - ls
+  - cd ../
+  - pww
+  - ls
+  - jekyll new jekyll
+  - cd ./Cresson
