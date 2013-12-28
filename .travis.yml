@@ -7,7 +7,7 @@ before_script:
   - pwd
   - ls
   - cd ../
-  - pww
+  - pwd
   - ls
   - jekyll new jekyll
   - cd ./Cresson
